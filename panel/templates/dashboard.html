@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b14">
+<title>Dashboard | SiftPanel</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090b14;color:#f5f6ff;font-family:Arial,sans-serif}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:230px;padding:25px 16px;background:#101321;border-right:1px solid #292e43}
+.brand{font-size:25px;font-weight:bold;color:#a78bfa;margin-bottom:8px}
+.tagline{font-size:12px;color:#858da8;margin-bottom:35px}
+.nav{display:block;text-decoration:none;color:#c6cbe0;padding:13px;margin:5px 0;border-radius:9px}
+.nav.active,.nav:hover{background:#292044;color:#c4b5fd}
+.main{margin-left:230px;padding:30px;max-width:1500px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:30px}
+h1{margin:0;font-size:27px}
+.muted{color:#929ab5;font-size:14px}
+.badge{padding:9px 13px;border:1px solid #343951;border-radius:20px;color:#c4b5fd}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.card{background:#141827;border:1px solid #2b3148;border-radius:15px;padding:22px;margin-bottom:20px}
+.card h3{margin-top:0;color:#c4b5fd}
+.number{font-size:28px;font-weight:bold;margin:15px 0}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+button{padding:12px 16px;border:0;border-radius:9px;background:#8b5cf6;color:white;font-weight:bold;cursor:pointer}
+button:hover{background:#7c3aed}
+button.secondary{background:#272d42}
+.server-row{padding:15px 0;border-bottom:1px solid #292e43}
+.status{color:#fbbf24;font-size:12px}
+.footer{font-size:12px;color:#7f879f;text-align:center;padding:25px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}}
+@media(max-width:600px){.sidebar{position:static;width:auto;padding:15px;border-right:0;border-bottom:1px solid #292e43}.tagline{margin-bottom:12px}.nav{display:inline-block;padding:9px}.main{margin-left:0;padding:17px}.cards{grid-template-columns:1fr 1fr}.card{padding:16px}h1{font-size:23px}}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+<div class="brand">SiftPanel</div>
+<div class="tagline">Your Ultimate IT & Hosting Partner</div>
+
+<a class="nav active" href="/dashboard">⌂ Dashboard</a>
+<a class="nav" href="#servers">▣ Servers</a>
+<a class="nav" href="#resources">▤ Resources</a>
+<a class="nav" href="#activity">◷ Activity</a>
+
+<form action="/logout" method="POST">
+<button class="secondary" style="width:100%;margin-top:25px">Log Out</button>
+</form>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+<div>
+<h1>Dashboard</h1>
+<p class="muted">Welcome back, {{ username }}!</p>
+</div>
+<div class="badge">● SiftPanel</div>
+</div>
+
+<section class="cards">
+<div class="card">
+<h3>Total Servers</h3>
+<div class="number">0</div>
+<p class="muted">No servers connected</p>
+</div>
+
+<div class="card">
+<h3>Running</h3>
+<div class="number">0</div>
+<p class="muted">Active servers</p>
+</div>
+
+<div class="card">
+<h3>CPU Usage</h3>
+<div class="number">--%</div>
+<p class="muted">Node monitoring pending</p>
+</div>
+
+<div class="card">
+<h3>RAM Usage</h3>
+<div class="number">-- GB</div>
+<p class="muted">Node monitoring pending</p>
+</div>
+</section>
+
+<div class="grid">
+
+<section class="card" id="servers">
+<h2>My Servers</h2>
+<p class="muted">Your game servers and applications will appear here.</p>
+
+<div class="server-row">
+<strong>No servers yet</strong>
+<p class="muted">Connect a configured node before deploying servers.</p>
+<span class="status">● Waiting for node setup</span>
+</div>
+
+<br>
+<button type="button" onclick="alert('Server deployment will be enabled after the node agent is connected.')">
++ Create Server
+</button>
+</section>
+
+<section class="card" id="resources">
+<h2>Quick Information</h2>
+<p class="muted">Panel status</p>
+<div class="server-row">🖥️ Panel: <span style="color:#4ade80">Available</span></div>
+<div class="server-row">🐳 Docker: Not connected</div>
+<div class="server-row">🌐 Nodes: 0 connected</div>
+<div class="server-row">🔐 Authentication: Enabled</div>
+</section>
+
+</div>
+
+<section class="card" id="activity">
+<h2>Recent Activity</h2>
+<p class="muted">No activity recorded yet.</p>
+</section>
+
+<div class="footer">
+SiftNodes © 2026 · Powered by SiftPanel
+</div>
+
+</main>
+</body>
+</html>
